@@ -1,0 +1,138 @@
+kunal@Kunal:~$ ls
+Desktop    Downloads         Music     Public     Videos
+Documents  examples.desktop  Pictures  Templates
+kunal@Kunal:~$ cd Desktop/
+kunal@Kunal:~/Desktop$ ls
+kp  newProj  project
+kunal@Kunal:~/Desktop$ cd newProj/
+kunal@Kunal:~/Desktop/newProj$ ls
+kp.css  kp.html  token.txt
+kunal@Kunal:~/Desktop/newProj$ touch blanck
+kunal@Kunal:~/Desktop/newProj$ ls
+blanck  kp.css  kp.html  token.txt
+kunal@Kunal:~/Desktop/newProj$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	blanck.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+kunal@Kunal:~/Desktop/newProj$ git add .
+kunal@Kunal:~/Desktop/newProj$ git commit -m "second"
+[master e36fc6b] second
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 blanck.txt
+kunal@Kunal:~/Desktop/newProj$ git push origin master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 304 bytes | 304.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To github.com:kr-kunal/newTest.git
+   3043ecf..e36fc6b  master -> master
+kunal@Kunal:~/Desktop/newProj$ git status
+On branch master
+nothing to commit, working tree clean
+kunal@Kunal:~/Desktop/newProj$ git branch test-branch 
+kunal@Kunal:~/Desktop/newProj$ git branches
+git: 'branches' is not a git command. See 'git --help'.
+kunal@Kunal:~/Desktop/newProj$ git branch
+* master
+  test-branch
+kunal@Kunal:~/Desktop/newProj$ git checkout test-branch
+Switched to branch 'test-branch'
+kunal@Kunal:~/Desktop/newProj$ git branch -d test-branch
+error: Cannot delete branch 'test-branch' checked out at '/home/kunal/Desktop/newProj'
+kunal@Kunal:~/Desktop/newProj$ git branch
+  master
+* test-branch
+kunal@Kunal:~/Desktop/newProj$ git checkout master
+Switched to branch 'master'
+kunal@Kunal:~/Desktop/newProj$ git branch
+* master
+  test-branch
+kunal@Kunal:~/Desktop/newProj$ git branch -d test-branch
+Deleted branch test-branch (was e36fc6b).
+kunal@Kunal:~/Desktop/newProj$ git branch
+* master
+kunal@Kunal:~/Desktop/newProj$ git status
+On branch master
+nothing to commit, working tree clean
+kunal@Kunal:~/Desktop/newProj$ ls
+blanck.txt  kp.css  kp.html  token.txt
+kunal@Kunal:~/Desktop/newProj$ git rm token.txt
+rm 'token.txt'
+kunal@Kunal:~/Desktop/newProj$ ls
+blanck.txt  kp.css  kp.html
+kunal@Kunal:~/Desktop/newProj$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	deleted:    token.txt
+
+kunal@Kunal:~/Desktop/newProj$ git push origin master
+Everything up-to-date
+kunal@Kunal:~/Desktop/newProj$ git add .
+kunal@Kunal:~/Desktop/newProj$ git commit -m "third"
+[master 661e1cf] third
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 token.txt
+kunal@Kunal:~/Desktop/newProj$ git push origin master
+Counting objects: 2, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 213 bytes | 213.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:kr-kunal/newTest.git
+   e36fc6b..661e1cf  master -> master
+kunal@Kunal:~/Desktop/newProj$ git branch slave
+kunal@Kunal:~/Desktop/newProj$ git branch
+* master
+  slave
+kunal@Kunal:~/Desktop/newProj$ git checkout slave
+Switched to branch 'slave'
+kunal@Kunal:~/Desktop/newProj$ git status
+On branch slave
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   kp.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+kunal@Kunal:~/Desktop/newProj$ git add -all
+error: did you mean `--all` (with two dashes ?)
+kunal@Kunal:~/Desktop/newProj$ git add --all
+kunal@Kunal:~/Desktop/newProj$ git status
+On branch slave
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   kp.html
+
+kunal@Kunal:~/Desktop/newProj$ git commit -m "Updated"
+[slave eb5d244] Updated
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+kunal@Kunal:~/Desktop/newProj$ ls
+blanck.txt  kp.css  kp.html
+kunal@Kunal:~/Desktop/newProj$ git branch
+  master
+* slave
+kunal@Kunal:~/Desktop/newProj$ git push origin slave
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 305 bytes | 305.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+remote: 
+remote: Create a pull request for 'slave' on GitHub by visiting:
+remote:      https://github.com/kr-kunal/newTest/pull/new/slave
+remote: 
+To github.com:kr-kunal/newTest.git
+ * [new branch]      slave -> slave
+kunal@Kunal:~/Desktop/newProj$ 
+
